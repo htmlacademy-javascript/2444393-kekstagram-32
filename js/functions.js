@@ -1,12 +1,12 @@
 /* eslint-disable no-console */
-const stringLengthChecks = (string, length) =>
+const checksStringLength = (string, length) =>
   string.length <= length;
 
-console.log(stringLengthChecks('проверяемая строка', 20));
-console.log(stringLengthChecks('проверяемая строка', 18));
-console.log(stringLengthChecks('проверяемая строка', 10));
+console.log(checksStringLength('проверяемая строка', 20));
+console.log(checksStringLength('проверяемая строка', 18));
+console.log(checksStringLength('проверяемая строка', 10));
 
-const stringPalindromeChecks = (string) => {
+const cheksStringPalindrome = (string) => {
   const newString = string.replaceAll(' ', '').toUpperCase();
   let reservedString = '';
 
@@ -17,12 +17,12 @@ const stringPalindromeChecks = (string) => {
   return newString === reservedString;
 };
 
-console.log(stringPalindromeChecks('Лёша на полке клопа нашёл'));
-console.log(stringPalindromeChecks('топот'));
-console.log(stringPalindromeChecks('ДовОд'));
-console.log(stringPalindromeChecks('Кекс'));
+console.log(cheksStringPalindrome('Лёша на полке клопа нашёл'));
+console.log(cheksStringPalindrome('топот'));
+console.log(cheksStringPalindrome('ДовОд'));
+console.log(cheksStringPalindrome('Кекс'));
 
-const numberExtraction = (input) => {
+const extractionNumber = (input) => {
   const string = input.toString();
   let numberString = '';
 
@@ -35,12 +35,12 @@ const numberExtraction = (input) => {
   return numberString.length > 0 ? numberString : NaN;
 };
 
-console.log(numberExtraction('2023 год'));
-console.log(numberExtraction('ECMAScript 2022'));
-console.log(numberExtraction('1 кефир, 0.5 батона'));
-console.log(numberExtraction('агент 007'));
-console.log(numberExtraction('а я томат'));
+console.log(extractionNumber('2023 год'));
+console.log(extractionNumber('ECMAScript 2022'));
+console.log(extractionNumber('1 кефир, 0.5 батона'));
+console.log(extractionNumber('агент 007'));
+console.log(extractionNumber('а я томат'));
 
-console.log(numberExtraction(2023));
-console.log(numberExtraction(-1));
-console.log(numberExtraction(1.5));
+console.log(extractionNumber(2023));
+console.log(extractionNumber(-1));
+console.log(extractionNumber(1.5));
