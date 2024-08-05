@@ -1,5 +1,4 @@
 import {generateDataArray} from './dataGenerator.js';
-import {generatePictures} from './thumbnailService.js';
+import {renderGallery} from './pictureBase.js';
 
-generatePictures(generateDataArray());
-
+renderGallery(generateDataArray());
