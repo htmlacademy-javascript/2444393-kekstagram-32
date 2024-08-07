@@ -29,5 +29,8 @@ const createMessages = () => Array.from(
   () => getRandomArrayElement(message),
 ).join(' ');
 
+//проверка нажатия клавиши (Escape)
+const isEscapeKey = (evt) => evt.key === 'Escape';
+
 //экспортируем все функциии
-export { getRandomArrayElement, getRandomInteger, generateRandomId, createMessages};
+export { getRandomArrayElement, getRandomInteger, generateRandomId, createMessages, isEscapeKey};

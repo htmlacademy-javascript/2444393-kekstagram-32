@@ -17,7 +17,7 @@ const createComments = () => {
 
   return {
     id: generateRandomId(),
-    avatar: `${AVATAR_PATH}${randomNamesIndex}.svg`,
+    avatar: `${AVATAR_PATH}${randomNamesIndex + 1}.svg`,
     message: createMessages(),
     name: names[randomNamesIndex]
   };
