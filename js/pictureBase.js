@@ -1,10 +1,10 @@
 import {generatePictures} from './thumbnailService.js';
 import {openBigPicture} from './fullPicture.js';
+import * as constants from './const.js';
 
-const similarListElement = document.querySelector('.pictures');
 
 const renderGallery = (pictures) => {
-  similarListElement.addEventListener('click', (evt) => {
+  constants.similarListElement.addEventListener('click', (evt) => {
     const thumbnail = evt.target.closest('[data-thumbnail-id]');
     if (!thumbnail) {
       return;
@@ -18,7 +18,7 @@ const renderGallery = (pictures) => {
     openBigPicture(picture);
   });
 
-  generatePictures(pictures, similarListElement);
+  generatePictures(pictures, constants.similarListElement);
 };
 
 export { renderGallery };
