@@ -29,6 +29,43 @@ const HASHTAG_ERRORS = {
   REPEAT: 'Повторяющиеся хэштеги',
 };
 
+// константы из scaleManager.js
+const scaleSmallerButton = document.querySelector('.scale__control--smaller');
+const scaleBiggerButton = document.querySelector('.scale__control--bigger');
+const scaleControlValue = document.querySelector('.scale__control--value');
+const imgUploadPreview = document.querySelector('.img-upload__preview');
+
+//константы из effectManager.js
+const effectLevelSlider = document.querySelector('.effect-level__slider');
+const effectLevelValue = document.querySelector('.effect-level__value');
+const imagePreview = document.querySelector('.img-upload__preview img');
+const effectLevelContainer = document.querySelector('.img-upload__effect-level');
+const effectRadios = document.querySelectorAll('input[name="effect"]');
+
+const SLIDER_DEFAULTS = {
+  min: 0,
+  max: 100,
+  start: 100,
+  step: 1,
+  connect: 'lower',
+};
+
+const EFFECTS = {
+  chrome: 'chrome',
+  sepia: 'sepia',
+  marvin: 'marvin',
+  phobos: 'phobos',
+  heat: 'heat',
+};
+
+const effectOptions = {
+  [EFFECTS.chrome]: { filter: (value) => `grayscale(${value})`, range: { min: 0, max: 1 }, start: 1, step: 0.1 },
+  [EFFECTS.sepia]: { filter: (value) => `sepia(${value})`, range: { min: 0, max: 1 }, start: 1, step: 0.1 },
+  [EFFECTS.marvin]: { filter: (value) => `invert(${value}%)`, range: { min: 0, max: 100 }, start: 100, step: 1 },
+  [EFFECTS.phobos]: { filter: (value) => `blur(${value}px)`, range: { min: 0, max: 3 }, start: 3, step: 0.1 },
+  [EFFECTS.heat]: { filter: (value) => `brightness(${value})`, range: { min: 1, max: 3 }, start: 3, step: 0.1 },
+};
+
 // экспорт констант
 export { bodyElement,
   similarListElement,
@@ -48,4 +85,16 @@ export { bodyElement,
   submitButton,
   COMMENT_ERRORS,
   HASHTAG_ERRORS,
+  scaleSmallerButton,
+  scaleBiggerButton,
+  scaleControlValue,
+  imgUploadPreview,
+  effectLevelSlider,
+  effectLevelValue,
+  imagePreview,
+  effectLevelContainer,
+  effectRadios,
+  SLIDER_DEFAULTS,
+  EFFECTS,
+  effectOptions
 };
