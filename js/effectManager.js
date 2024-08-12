@@ -1,15 +1,16 @@
-import * as constants from './const.js';
+import * as constants from './selectors.js';
+import * as configure from './config.js';
 
 // функция, которая применяет фильтр к изображению на основе текущего значения слайдера и выбранного эффекта
 function applyFilter(value) {
   const selectedEffect = document.querySelector('input[name="effect"]:checked').value;
-  const filterFunction = constants.effectOptions[selectedEffect]?.filter || (() => '');
+  const filterFunction = configure.effectOptions[selectedEffect]?.filter || (() => '');
   constants.imagePreview.style.filter = filterFunction(value);
 }
 
 //функция, которая используется для настройки параметров слайдера
 function updateSliderOptions(effect) {
-  const options = constants.effectOptions[effect] || { range: { min: constants.SLIDER_DEFAULTS.min, max: constants.SLIDER_DEFAULTS.max }, start: constants.SLIDER_DEFAULTS.start, step: constants.SLIDER_DEFAULTS.step };
+  const options = configure.effectOptions[effect] || { range: { min: configure.SLIDER_DEFAULTS.min, max: configure.SLIDER_DEFAULTS.max }, start: configure.SLIDER_DEFAULTS.start, step: configure.SLIDER_DEFAULTS.step };
   constants.effectLevelSlider.noUiSlider.updateOptions({
     range: options.range,
     start: options.start,
@@ -44,12 +45,12 @@ function handleSliderUpdate() {
 // Инициализация слайдера
 noUiSlider.create(constants.effectLevelSlider, {
   range: {
-    min: constants.SLIDER_DEFAULTS.min,
-    max: constants.SLIDER_DEFAULTS.max,
+    min: configure.SLIDER_DEFAULTS.min,
+    max: configure.SLIDER_DEFAULTS.max,
   },
-  start: constants.SLIDER_DEFAULTS.start,
-  step: constants.SLIDER_DEFAULTS.step,
-  connect: constants.SLIDER_DEFAULTS.connect,
+  start: configure.SLIDER_DEFAULTS.start,
+  step: configure.SLIDER_DEFAULTS.step,
+  connect: configure.SLIDER_DEFAULTS.connect,
 });
 
 constants.effectRadios.forEach((input) => {
