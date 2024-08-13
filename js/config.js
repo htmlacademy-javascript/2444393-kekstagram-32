@@ -1,5 +1,11 @@
 //pегулярное выражение для проверки хэштегов
-const hashtagPattern = /^#[a-zа-яё0-9]{1,19}$/i;
+const MIN_CHARACTER_LENGTH = 1;
+const MAX_CHARACTER_LENGTH = 19;
+
+function createHashtagPattern() {
+  return new RegExp(`^#[a-zа-яё0-9]{${MIN_CHARACTER_LENGTH},${MAX_CHARACTER_LENGTH}}$`, 'i');
+}
+const hashtagPattern = createHashtagPattern();
 
 //сообщения об ошибках при валидациии (formValidator.js)
 const COMMENT_ERRORS = {
@@ -58,7 +64,6 @@ const ErrorText = {
   GET_DATA: 'Не удалось загрузить данные. Попробуйте обновить страницу',
   UPLOAD_PICTURE: 'Не удалось отправить файл. Попробуйте ещё раз',
 };
-
 
 //экспорт констант
 export {hashtagPattern,

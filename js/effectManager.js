@@ -1,12 +1,18 @@
 import * as constants from './selectors.js';
 import * as configure from './config.js';
 
-// функция, которая применяет фильтр к изображению на основе текущего значения слайдера и выбранного эффекта
+//функция, которая применяет фильтр к изображению на основе текущего значения слайдера и выбранного эффекта
 function applyFilter(value) {
   const selectedEffect = document.querySelector('input[name="effect"]:checked').value;
-  const filterFunction = configure.effectOptions[selectedEffect]?.filter || (() => '');
+
+  if (!configure.effectOptions[selectedEffect]) {
+    return;
+  }
+
+  const filterFunction = configure.effectOptions[selectedEffect].filter || (() => '');
   constants.imagePreview.style.filter = filterFunction(value);
 }
+
 
 //функция, которая используется для настройки параметров слайдера
 function updateSliderOptions(effect) {
