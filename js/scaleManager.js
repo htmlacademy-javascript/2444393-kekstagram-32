@@ -1,6 +1,6 @@
-import * as constants from './const.js';
+import * as constants from './selectors.js';
 
-// Функция для обновления масштаба
+//функция для обновления масштаба
 function updateScale(increment) {
   const currentValue = parseInt(constants.scaleControlValue.value, 10);
   const minScale = parseInt(constants.scaleControlValue.getAttribute('min'), 10);
@@ -19,10 +19,16 @@ function updateScale(increment) {
   downScaleImage();
 }
 
-// Функция для изменения масштаба изображения
+//функция для изменения масштаба изображения
 function downScaleImage() {
   const scaleValue = parseInt(constants.scaleControlValue.value, 10) / 100;
   constants.imgUploadPreview.style.transform = `scale(${scaleValue})`;
+}
+
+//функция для сброса масштаба изображения
+export function resetScale() {
+  constants.scaleControlValue.value = '100%';
+  downScaleImage();
 }
 
 constants.scaleSmallerButton.addEventListener('click', () => {
@@ -31,4 +37,3 @@ constants.scaleSmallerButton.addEventListener('click', () => {
 constants.scaleBiggerButton.addEventListener('click', () => {
   updateScale(1);
 });
-

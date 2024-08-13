@@ -1,5 +1,5 @@
 import { isEscapeKey } from './util.js';
-import * as constants from './const.js';
+import * as constants from './selectors.js';
 
 //функция открытия окна редактирования изображений
 function onImgUploadInputChange(evt) {
