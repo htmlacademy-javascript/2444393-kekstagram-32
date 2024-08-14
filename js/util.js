@@ -1,4 +1,5 @@
 import { message } from './data.js';
+import { DEBOUNCE_DELAY } from './config.js';
 
 //функция генерирует случайное целое число в заданном диапазоне.
 function getRandomInteger(a, b) {
@@ -48,8 +49,17 @@ function showAlert(errorMessage) {
 
   setTimeout(() => {
     errorElement.remove();
-  }, 5000);
+  }, 500);
 }
 
-export { getRandomArrayElement, getRandomInteger, generateRandomId, createMessages, isEscapeKey, showAlert };
+function debounce (callback, timeoutDelay = DEBOUNCE_DELAY) {
+  let timeoutId;
+
+  return (...rest) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
+  };
+}
+
+export { getRandomArrayElement, getRandomInteger, generateRandomId, createMessages, isEscapeKey, showAlert, debounce };
 

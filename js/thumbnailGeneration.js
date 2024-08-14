@@ -2,16 +2,8 @@ const similarPictureTemplate = document.querySelector('#picture')
   .content
   .querySelector('.picture');
 
-/**
- * Создает миниатюру фотографии на основе переданных данных.
- * @param {Object} param0 - Объект с данными фотографии.
- * @param {string} param0.url - URL изображения.
- * @param {string} param0.description - Описание фотографии.
- * @param {number} param0.likes - Количество лайков.
- * @param {Array} param0.comments - Массив с комментариями к фотографии.
- * @param {number} param0.id - Идентификатор фотографии.
- * @returns {HTMLElement} - Сгенерированный элемент миниатюры.
- */
+
+//функция создает миниатюру фотографии на основе переданных данных
 function createThumbnail({ url, description, likes, comments, id }) {
   const pictureElement = similarPictureTemplate.cloneNode(true);
 

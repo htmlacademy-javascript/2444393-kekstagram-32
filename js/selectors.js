@@ -1,5 +1,8 @@
 const bodyElement = document.querySelector('body');
 const similarListElement = document.querySelector('.pictures');
+const imgFilters = document.querySelector('.img-filters');
+const filtersForm = document.querySelector('.img-filters__form');
+const filterButtons = document.querySelectorAll('.img-filters__button');
 
 // константы из fullPicture.js
 const bigPictureWindow = document.querySelector('.big-picture');
@@ -32,8 +35,16 @@ const imagePreview = document.querySelector('.img-upload__preview img');
 const effectLevelContainer = document.querySelector('.img-upload__effect-level');
 const effectRadios = document.querySelectorAll('input[name="effect"]');
 
+//константы из filterManager.js
+const imgFiltersSection = document.querySelector('.img-filters');
+const imgFiltersForm = imgFiltersSection.querySelector('.img-filters__form');
+const picturesContainer = document.querySelector('.pictures');
+
 export { bodyElement,
   similarListElement,
+  imgFilters,
+  filtersForm,
+  filterButtons,
   bigPictureWindow,
   bigPictureCloseElement,
   commentListElement,
@@ -57,4 +68,7 @@ export { bodyElement,
   imagePreview,
   effectLevelContainer,
   effectRadios,
+  imgFiltersSection,
+  imgFiltersForm,
+  picturesContainer
 };

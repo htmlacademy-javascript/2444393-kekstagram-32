@@ -65,6 +65,12 @@ const ErrorText = {
   UPLOAD_PICTURE: 'Не удалось отправить файл. Попробуйте ещё раз',
 };
 
+//таймаут для debounce delay
+const DEBOUNCE_DELAY = 500;
+
+//количество картинок (filterManager.js)
+const RANDOM_PICTURE_COUNT = 10;
+
 //экспорт констант
 export {hashtagPattern,
   COMMENT_ERRORS,
@@ -75,5 +81,7 @@ export {hashtagPattern,
   BASE_URL,
   Route,
   Method,
-  ErrorText
+  ErrorText,
+  DEBOUNCE_DELAY,
+  RANDOM_PICTURE_COUNT
 };
