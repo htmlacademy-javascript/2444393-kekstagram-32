@@ -1,7 +1,7 @@
 import * as configure from './config.js';
 
 //функция для выполнения запросов к серверу.
-const load = (route, errorText, method = configure.Method.GET, body = null) =>
+export const load = (route, errorText, method = configure.Method.GET, body = null) =>
   fetch(`${configure.BASE_URL}${route}`, { method, body })
     .then((response) => {
       if (!response.ok) {
@@ -12,7 +12,6 @@ const load = (route, errorText, method = configure.Method.GET, body = null) =>
     .catch(() => {
       throw new Error(errorText);
     });
-
 
 //функция для получения данных с сервера.
 export const getData = () =>

@@ -3,7 +3,8 @@ import { renderGallery } from './galleryRenderer.js';
 import { openBigPicture } from './fullPicture.js';
 import { applyFilter } from './effectManager.js';
 import { showAlert } from './util.js';
-import './formValidator.js';
+import './filterManager.js';
+import './formValidationSetup.js';
 import './uploadForm.js';
 import './scaleManager.js';
 
