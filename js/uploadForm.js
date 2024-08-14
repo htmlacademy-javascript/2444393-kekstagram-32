@@ -5,7 +5,14 @@ import * as constants from './selectors.js';
 function showPreviewImage(file) {
   const reader = new FileReader();
   reader.onload = function () {
-    constants.imagePreview.src = reader.result;
+    const imageSrc = reader.result;
+    constants.imagePreview.src = imageSrc;
+
+    // Обновляем превью для каждого эффекта
+    const effectsPreviews = document.querySelectorAll('.effects__preview');
+    effectsPreviews.forEach((preview) => {
+      preview.style.backgroundImage = `url(${imageSrc})`;
+    });
   };
   reader.readAsDataURL(file);
 }
