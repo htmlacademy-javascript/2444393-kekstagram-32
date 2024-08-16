@@ -1,5 +1,5 @@
 import {generatePictures} from './thumbnailGeneration.js';
-import * as constants from './selectors.js';
+import * as constants from './constans/mainInterfaceConst.js';
 
 //функция отображает галерею изображений и добавляет обработчики для открытия большой фотографии.
 function renderGallery(pictures, openBigPicture) {

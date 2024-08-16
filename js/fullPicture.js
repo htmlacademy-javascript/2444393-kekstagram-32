@@ -1,10 +1,13 @@
 import { isEscapeKey } from './util.js';
-import * as constants from './selectors.js';
+import * as constants from './constans/mainInterfaceConst.js';
+
+const bigPictureImg = constants.bigPictureWindow.querySelector('.big-picture__img img');
+const likesCount = constants.bigPictureWindow.querySelector('.likes-count');
+const socialCaption = constants.bigPictureWindow.querySelector('.social__caption');
 
 //функция создания элемента комментария на основе переданных данных
 function createComment({ avatar, name, message }) {
   const comment = constants.commentElement.cloneNode(true);
-
   comment.querySelector('.social__picture').src = avatar;
   comment.querySelector('.social__picture').alt = name;
   comment.querySelector('.social__text').textContent = message;
@@ -68,10 +71,10 @@ function onCancelButtonClick() {
 
 //функция отображает детали выбранной фотографии (изображение, описание и количество лайков)
 function renderPictureDetails({ url, likes, description }) {
-  constants.bigPictureWindow.querySelector('.big-picture__img img').src = url;
-  constants.bigPictureWindow.querySelector('.big-picture__img img').alt = description;
-  constants.bigPictureWindow.querySelector('.likes-count').textContent = likes;
-  constants.bigPictureWindow.querySelector('.social__caption').textContent = description;
+  bigPictureImg.src = url;
+  bigPictureImg.alt = description;
+  likesCount.textContent = likes;
+  socialCaption.textContent = description;
 }
 
 //функция открывает модальное окно с большой фотографией и загружает её детали
@@ -90,7 +93,7 @@ function openBigPicture(data) {
   }
 }
 
-//добавляем обработчик клика на кнопку закрытия модального окна
 constants.bigPictureCloseElement.addEventListener('click', onCancelButtonClick);
 
 export { openBigPicture };
+

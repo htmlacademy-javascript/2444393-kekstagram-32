@@ -1,0 +1,10 @@
+export const bodyElement = document.querySelector('body');
+export const similarListElement = document.querySelector('.pictures');
+export const bigPictureWindow = document.querySelector('.big-picture');
+export const bigPictureCloseElement = document.querySelector('.big-picture__cancel');
+export const commentListElement = bigPictureWindow.querySelector('.social__comments');
+export const commentLoaderElementButton = bigPictureWindow.querySelector('.comments-loader');
+export const commentElement = document.querySelector('#comment').content.querySelector('.social__comment');
+export const commentElementShownCount = bigPictureWindow.querySelector('.social__comment-shown-count');
+export const commentElementTotalCount = bigPictureWindow.querySelector('.social__comment-total-count');
+export const picturesContainer = document.querySelector('.pictures');
