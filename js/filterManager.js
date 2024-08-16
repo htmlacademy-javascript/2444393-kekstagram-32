@@ -1,8 +1,9 @@
 import { generatePictures } from './thumbnailGeneration.js';
 import { debounce } from './util.js';
 import { load } from './api.js';
-import * as constants from './selectors.js';
 import * as configure from './config.js';
+import * as constants from './constans/mainInterfaceConst.js';
+import * as imgFiltersConstants from './constans/imageFiltersConst.js';
 
 let picturesData = [];
 
@@ -30,7 +31,7 @@ async function fetchPictures() {
   try {
     const data = await load(configure.Route.GET_DATA, configure.ErrorText.GET_DATA);
     picturesData = data;
-    constants.imgFiltersSection.classList.remove('img-filters--inactive');
+    imgFiltersConstants.imgFiltersSection.classList.remove('img-filters--inactive');
     updatePictures();
   } catch (error) {
     showErrorToUser(error.message);
@@ -65,20 +66,23 @@ function applyFilter(filterType) {
   generatePictures(filteredPictures, constants.picturesContainer);
 }
 
+//отложенное примененение фильтра
+const handleFilterChange = debounce((filterType) => {
+  applyFilter(filterType);
+});
+
 //обработчик фильтров с устранением дребезга
-const handleFilterChange = debounce((event) => {
+function handleFilterButtonClick(event) {
   const filterButton = event.target.closest('.img-filters__button');
 
   if (filterButton) {
-    const filterType = filterButton.id;
-
-    applyFilter(filterType);
-
-    constants.imgFiltersForm.querySelector('.img-filters__button--active').classList.remove('img-filters__button--active');
+    imgFiltersConstants.imgFiltersForm.querySelector('.img-filters__button--active').classList.remove('img-filters__button--active');
     filterButton.classList.add('img-filters__button--active');
-  }
-});
 
-constants.imgFiltersForm.addEventListener('click', handleFilterChange);
+    handleFilterChange(filterButton.id);
+  }
+}
+
+imgFiltersConstants.imgFiltersForm.addEventListener('click', handleFilterButtonClick);
 
 fetchPictures();

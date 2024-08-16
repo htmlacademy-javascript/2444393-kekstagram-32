@@ -1,12 +1,13 @@
 import { isEscapeKey } from './util.js';
-import * as constants from './selectors.js';
+import * as constants from './constans/mainInterfaceConst.js';
+import * as imgUploadConstants from './constans/imageUploadConst.js';
 
 //функция для показа выбранного изображения в предварительном просмотре
 function showPreviewImage(file) {
   const reader = new FileReader();
   reader.onload = function () {
     const imageSrc = reader.result;
-    constants.imagePreview.src = imageSrc;
+    imgUploadConstants.imagePreview.src = imageSrc;
 
     // Обновляем превью для каждого эффекта
     const effectsPreviews = document.querySelectorAll('.effects__preview');
@@ -24,10 +25,10 @@ function onImgUploadInputChange(evt) {
 
   if (file && file.type.startsWith('image/')) {
     showPreviewImage(file);
-    constants.imgUploadOverlay.classList.remove('hidden');
+    imgUploadConstants.imgUploadOverlay.classList.remove('hidden');
     constants.bodyElement.classList.add('modal-open');
     document.addEventListener('keydown', onDocumentKeydown);
-    constants.imgUploadInput.value = '';
+    imgUploadConstants.imgUploadInput.value = '';
   } else {
     // eslint-disable-next-line no-alert
     alert ('Пожалуйста, выберите изображение.');
@@ -36,7 +37,7 @@ function onImgUploadInputChange(evt) {
 
 //функция для закрытия окна редактирования изображения
 function closeUploadPicture() {
-  constants.imgUploadOverlay.classList.add('hidden');
+  imgUploadConstants.imgUploadOverlay.classList.add('hidden');
   constants.bodyElement.classList.remove('modal-open');
   document.removeEventListener('keydown', onDocumentKeydown);
 }
@@ -44,7 +45,7 @@ function closeUploadPicture() {
 //функция для обработки нажатий клавиш на клавиатуре
 function onDocumentKeydown(evt) {
   if (isEscapeKey(evt)) {
-    if (document.activeElement !== constants.hashtagsInput && document.activeElement !== constants.descriptionInput) {
+    if (document.activeElement !== imgUploadConstants.hashtagsInput && document.activeElement !== imgUploadConstants.descriptionInput) {
       evt.preventDefault();
       closeUploadPicture();
     }
@@ -56,5 +57,5 @@ function onCancelButtonClick() {
   closeUploadPicture();
 }
 
-constants.imgUploadInput.addEventListener('change', onImgUploadInputChange);
-constants.imgUploadButtonCancel.addEventListener('click', onCancelButtonClick);
+imgUploadConstants.imgUploadInput.addEventListener('change', onImgUploadInputChange);
+imgUploadConstants.imgUploadButtonCancel.addEventListener('click', onCancelButtonClick);
